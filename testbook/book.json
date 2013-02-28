@@ -1,0 +1,44 @@
+{
+    "id": "com.acme.books.MyUniqueBookID",
+    "title": "Sample eBook Title",
+    "language": "en",
+    
+    "authors": [
+        { "name": "John Smith", "role": "aut"},
+        { "name": "Jane Appleseed", "role": "dsr"}
+    ],
+    
+    "description": "Brief description of the book",
+    "subject": "List of keywords, pertinent to content, separated by commas",
+    "publisher": "ACME Publishing Inc.",
+    "rights": "Copyright (c) 2012, Someone",
+    "date": "2013-01-17",
+    "relation": "http://www.acme.com/books/MyUniqueBookIDWebEdition/",
+
+    "files": {
+        "coverpage": "coverpage.md",
+        "title-page": "titlepage.md",
+        "include": [
+            { "id":"ncx", "path":"toc.ncx" },
+            "cover.jpg",
+            "style.css",
+            "*.md",
+            "media/*"
+        ],
+        "index": "index.md",
+        "exclude": []
+    },
+
+    "spine": {
+        "toc": "ncx",
+        "items": [
+            "coverpage",
+            "title-page",
+            "copyright",
+            "foreword",
+            "|^c\\d{1,2}-.*$|",
+            "index"
+        ]
+    }
+
+}

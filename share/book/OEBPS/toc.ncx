@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+    <head>
+        <meta name="dtb:uid" content="{$BookID}"/>
+        
+        <!-- 1 = chapters only, 2 = subchapters, 3 = third level section -->
+        <meta name="dtb:depth" content="2"/>
+        
+        <!-- Both required but unused, can be 0 -->
+        <meta name="dtb:totalPageCount" content="0"/>
+        <meta name="dtb:maxPageNumber" content="0"/>
+    </head>
+
+    <docTitle>
+        <text>{$BookTitle}</text>
+    </docTitle>
+    
+    {if="isset($BookChapters)"}
+    <!-- Navigation structure -->
+    <navMap>
+
+        <!-- Each navPoint must have all these elements in this order and 
+        reference to a content declared in the <manifest> section of content.opf -->
+        {$playOrder=1}
+        {loop="$BookChapters"}
+        <navPoint id="{$key}" playOrder="{$playOrder++}">
+           <navLabel>
+             <text>{$value.title}</text>
+           </navLabel>
+           <content src="{$value.path}"/>
+           {if="isset($value.sections)"}{loop="$value.sections"}
+           <navPoint id="{$key}" playOrder="{$playOrder++}">
+               <navLabel>
+                 <text>{$value.title}</text>
+               </navLabel>
+               <content src="{$value.path}"/>
+           </navPoint>
+           {/loop}{/if}
+        </navPoint>
+        {/loop}
+
+    </navMap>
+    {/if}
+</ncx>

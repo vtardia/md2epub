@@ -1,0 +1,25 @@
+{
+    "name": "vtardia/md2epub",
+    "description": "Markdown to ePub converter",
+    "homepage": "https://github.com/vtardia/md2epub",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "md2epub",
+            "homepage": "https://github.com/vtardia/md2epub/graphs/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "ext-zip": "*",
+        "ext-fileinfo": "*",
+        "rain/raintpl": "3.*",
+        "dflydev/markdown": "1.*"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "Md2Epub": "lib/"
+        }
+    }
+}

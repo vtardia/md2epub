@@ -1,0 +1,1 @@
+![My Awesome eBook](cover.jpg)

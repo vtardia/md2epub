@@ -1,0 +1,13 @@
+#!/bin/sh
+
+PHP=`which php`
+
+if [ $? != 0 ] ; then
+	echo "Unable to find PHP"
+	exit 1;
+fi
+
+SCRIPT=$(perl -MCwd=realpath -e "print realpath '$0'").php
+${PHP} "${SCRIPT}" $*
+
+exit;

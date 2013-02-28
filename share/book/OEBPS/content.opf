@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<package version="2.0" xmlns="http://www.idpf.org/2007/opf" unique-identifier="bookid">
+
+    <!-- Special characters must be encoded in Unicode Decimal format, eg, &#1234; -->
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+
+        <!-- Required fields -->
+        <dc:identifier id="bookid">{$BookID}</dc:identifier>
+        <dc:title>{$BookTitle}</dc:title>
+        <dc:language>{$BookLanguage}</dc:language><!-- 2 letters language code -->
+
+        <!-- or editorial staff eg. author (aut), designer (dsr), illustrator (ill), commenter (comm) or editor (edt) -->
+        {loop="$BookAuthors"}<dc:creator opf:role="{$value.role}">{$value.name}</dc:creator>
+        {/loop}
+        
+        {if="$BookDescription"}<dc:description>{$BookDescription}</dc:description>{/if}
+        {if="$BookSubject"}<dc:subject>{$BookSubject}</dc:subject>{/if}
+        {if="$BookPublisher"}<dc:publisher>{$BookPublisher}</dc:publisher>{/if}
+        {if="$BookRights"}<dc:rights>{$BookRights}</dc:rights>{/if}
+        {if="$BookDate"}<dc:date>{$BookDate}</dc:date><!-- The format must be YYYY-MM-DD -->{/if}
+        {if="$BookRelation"}<dc:relation>{$BookRelation}</dc:relation><!-- ISBN or related book site -->{/if}
+        
+    </metadata>
+    
+    <!-- List of all the files referenced inside the book, order doesn't matter -->
+    <manifest>
+        <!-- Each item must have a unique ID, a mime type and a URL relative to the content directory -->
+        {loop="$BookFiles"}<item id="{$key}" href="{$value.path}" media-type="{$value.type}"/>
+        {/loop}
+        <!-- Allowed media types
+         - image/gif (GIF images)
+         - image/jpeg (JPEG images)
+         - image/png (PNG images)
+         - image/svg+xml (SVG graphics)
+         - application/xhtml+xml (content files XML or XHTML)
+         - application/x-dtbook+xml (Audiobook files)
+         - text/css (style sheets)
+         - application/xml (generic XML file)
+        -->
+    </manifest>
+
+    <spine {if="$BookSpine.toc"}toc="{$BookSpine.toc}"{/if}>
+        {loop="$BookSpine.items"}<itemref idref="{$value}"/>
+        {/loop}
+    </spine>
+    
+    <!-- Optional section  -->
+    <!-- <guide>
+        <reference type="cover" title="coverpage" href="coverpage.xhtml" />
+        <reference type="title-page" title="titlepage" href="titlepage.xhtml" />
+        <reference type="toc" title="Index" href="index.xhtml" />
+        <reference type="text" title="content" href="chap01.xhtml" />
+    </guide> -->
+     
+</package>
