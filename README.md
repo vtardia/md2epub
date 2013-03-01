@@ -9,6 +9,8 @@ The Markdown parser library is [Michel Fortin's PHP Markdown Extra](http://miche
 
 The template parser library is [RainTPL](http://www.raintpl.com).
 
+More info on PHPMaster's article [Building ePub with PHP and Markdown](http://phpmaster.com/building-epub-with-php-and-markdown/).
+
 ## Installation
 
 Copy the application directory in a shared path (eg `/usr/local`) and create a link to `bin/md2epub`.
@@ -19,3 +21,6 @@ From the command line type:
 
     md2epub /source/ebook/directory/ /dest/book.epub
 
+## Contributors
+
+ - [Timothy Boronczyk](https://github.com/tboronczyk)
