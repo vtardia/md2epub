@@ -2,7 +2,7 @@
     "name": "vtardia/md2epub",
     "description": "Markdown to ePub converter",
     "homepage": "https://github.com/vtardia/md2epub",
-    "license": "GPL",
+    "license": "MIT",
     "authors": [
         {
             "name": "md2epub",
